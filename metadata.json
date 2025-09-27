@@ -1,0 +1,5 @@
+{
+  "name": "React Offline Chess",
+  "description": "A fully playable, aesthetically pleasing offline chess game for two players. Built with React, TypeScript, and Tailwind CSS, it features complete chess logic including move validation, check, checkmate, and stalemate detection.",
+  "requestFramePermissions": []
+}

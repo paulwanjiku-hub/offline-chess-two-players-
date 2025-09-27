@@ -1,0 +1,44 @@
+import React from 'react';
+import { Board, Piece, PieceType, PlayerColor } from './types';
+
+// FIX: Replaced JSX.Element with React.ReactElement to resolve "Cannot find namespace 'JSX'" error.
+export const PIECE_SVGS: { [key in PlayerColor]: { [key in PieceType]: React.ReactElement } } = {
+  [PlayerColor.WHITE]: {
+    [PieceType.PAWN]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="none" fillRule="evenodd" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.5 11.63V6M20 8h5" fill="#FFF" /><path d="M22.5 25c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="#FFF" /><path d="M11.5 37c5.5 3.5 16.5 3.5 22 0v-7s-3-4-11-4-11 4-11 4v7z" fill="#FFF" /><path d="M11.5 30c5.5-3 16.5-3 22 0" fill="none" /><path d="M11.5 37v-7s-3-4-11-4-11 4-11 4v7c5.5 3.5 16.5 3.5 22 0" fill="#FFF" /><path d="M11.5 30c5.5-3 16.5-3 22 0m-22 7v-7s-3-4-11-4-11 4-11 4v7m22-11c-8 0-11-4-11-4m22 4c-8 0-11-4-11-4" strokeLinejoin="miter" /></g></svg>,
+    [PieceType.ROOK]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#FFF" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 39h27v-3H9v3zM12.5 32l1.5-2.5h17l1.5 2.5h-20zM12 36v-4h21v4H12z" /><path d="M14 29.5v-13h17v13H14z" strokeLinejoin="miter" /><path d="M14 16.5L11 14h23l-3 2.5H14zM11 14V9h4v2h5V9h5v2h5V9h4v5H11z" /><path d="M12 35.5h21M13 31.5h19" fill="none" /></g></svg>,
+    [PieceType.KNIGHT]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#FFF" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10c10.5 1 16.5 8 16 29H15c-2 0-9-11-9-20 0-9 10-10 16-19" /><path d="M24 18c.38 2.91-5.55 7.37-8 9-3 2-2.82 4.34-5 4-1.042-.16-.5-3 1-4 2-1 6-4 6-6" fill="#FFF" strokeLinecap="butt" /><path d="M14.28 24.41c.09-.12-2.5-8.5-2.5-8.5-1-3 1.5-5.5 1.5-5.5l.5-1s-.5-1.5-1.5-1.5-3 0-3.5 2.5c-.5 2.5 2.5 7 2.5 7" /><path d="M15 15.5s-1-2.5-3-2.5c-2 0-3 2.5-3 2.5" fill="#FFF" /></g></svg>,
+    [PieceType.BISHOP]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="none" fillRule="evenodd" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><g fill="#FFF" strokeLinejoin="miter"><path d="M9 36c3.39-.97 10.11.43 13.5-2 3.39 2.43 10.11 1.03 13.5 2 0 0 1.65.54 3 2-.68.97-1.65.99-3 .5-3.39-.97-10.11.43-13.5-2-3.39 2.43-10.11 1.03-13.5 2-1.354.49-2.323.47-3-.5 1.354-.46 3-2 3-2z" /><path d="M15 32c2.5 2.5 12.5 2.5 15 0 .5-1.5 0-2 0-2 0-2.5-2.5-4-2.5-4 5.5-1.5 6-11.5-5-15.5-11 4-10.5 14-5 15.5 0 0-2.5 1.5-2.5 4 0 0-.5.5 0 2zM25 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 1 1 5 0z" /></g><path d="M17.5 26h10" strokeLinecap="butt" strokeMiterlimit="1.5" /></g></svg>,
+    [PieceType.QUEEN]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#FFF" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 12a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM24.5 7.5a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM41 12a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM16 8.5a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM33 9a2 2 0 1 1-4 0 2 2 0 1 1 4 0z" /><path d="M9 26c8.5-1.5 21-1.5 27 0l2-12-7-6-8.5 4-8.5-4-7 6 2 12z" strokeLinejoin="miter" /><path d="M9 26c0 2 1.5 4 1.5 4 5 4.5 16 4.5 21 0 0 0 1.5-2 1.5-4" /><path d="M11 30.5c5 3.5 18 3.5 23 0" fill="none" /><path d="M11 30.5v8h23v-8" /><path d="M11 38.5h23v2H11v-2z" /><path d="M11.5 34.5h22" fill="none" /></g></svg>,
+    [PieceType.KING]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#FFF" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.5 11.63V6M20 8h5" strokeLinejoin="miter" /><path d="M22.5 25c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" /><path d="M11.5 37c5.5 3.5 16.5 3.5 22 0v-7s-3-4-11-4-11 4-11 4v7z" /><path d="M11.5 30c5.5-3 16.5-3 22 0" fill="none" /><path d="M11.5 37v-7s-3-4-11-4-11 4-11 4v7c5.5 3.5 16.5 3.5 22 0" /><path d="M11.5 30c5.5-3 16.5-3 22 0m-22 7v-7s-3-4-11-4-11 4-11 4v7m22-11c-8 0-11-4-11-4m22 4c-8 0-11-4-11-4" strokeLinejoin="miter" /></g></svg>,
+  },
+  [PlayerColor.BLACK]: {
+    [PieceType.PAWN]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="none" fillRule="evenodd" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.5 11.63V6M20 8h5" fill="#000" /><path d="M22.5 25c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="#000" /><path d="M11.5 37c5.5 3.5 16.5 3.5 22 0v-7s-3-4-11-4-11 4-11 4v7z" fill="#000" /><path d="M11.5 30c5.5-3 16.5-3 22 0" fill="none" /><path d="M11.5 37v-7s-3-4-11-4-11 4-11 4v7c5.5 3.5 16.5 3.5 22 0" fill="#000" /><path d="M11.5 30c5.5-3 16.5-3 22 0m-22 7v-7s-3-4-11-4-11 4-11 4v7m22-11c-8 0-11-4-11-4m22 4c-8 0-11-4-11-4" strokeLinejoin="miter" /></g></svg>,
+    [PieceType.ROOK]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#000" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 39h27v-3H9v3zM12.5 32l1.5-2.5h17l1.5 2.5h-20zM12 36v-4h21v4H12z" /><path d="M14 29.5v-13h17v13H14z" strokeLinejoin="miter" /><path d="M14 16.5L11 14h23l-3 2.5H14zM11 14V9h4v2h5V9h5v2h5V9h4v5H11z" /><path d="M12 35.5h21M13 31.5h19" fill="none" /></g></svg>,
+    [PieceType.KNIGHT]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#000" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10c10.5 1 16.5 8 16 29H15c-2 0-9-11-9-20 0-9 10-10 16-19" /><path d="M24 18c.38 2.91-5.55 7.37-8 9-3 2-2.82 4.34-5 4-1.042-.16-.5-3 1-4 2-1 6-4 6-6" fill="#000" strokeLinecap="butt" /><path d="M14.28 24.41c.09-.12-2.5-8.5-2.5-8.5-1-3 1.5-5.5 1.5-5.5l.5-1s-.5-1.5-1.5-1.5-3 0-3.5 2.5c-.5 2.5 2.5 7 2.5 7" /><path d="M15 15.5s-1-2.5-3-2.5c-2 0-3 2.5-3 2.5" fill="#000" /></g></svg>,
+    [PieceType.BISHOP]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="none" fillRule="evenodd" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><g fill="#000" strokeLinejoin="miter"><path d="M9 36c3.39-.97 10.11.43 13.5-2 3.39 2.43 10.11 1.03 13.5 2 0 0 1.65.54 3 2-.68.97-1.65.99-3 .5-3.39-.97-10.11.43-13.5-2-3.39 2.43-10.11 1.03-13.5 2-1.354.49-2.323.47-3-.5 1.354-.46 3-2 3-2z" /><path d="M15 32c2.5 2.5 12.5 2.5 15 0 .5-1.5 0-2 0-2 0-2.5-2.5-4-2.5-4 5.5-1.5 6-11.5-5-15.5-11 4-10.5 14-5 15.5 0 0-2.5 1.5-2.5 4 0 0-.5.5 0 2zM25 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 1 1 5 0z" /></g><path d="M17.5 26h10" strokeLinecap="butt" strokeMiterlimit="1.5" /></g></svg>,
+    [PieceType.QUEEN]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#000" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M8 12a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM24.5 7.5a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM41 12a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM16 8.5a2 2 0 1 1-4 0 2 2 0 1 1 4 0zM33 9a2 2 0 1 1-4 0 2 2 0 1 1 4 0z" /><path d="M9 26c8.5-1.5 21-1.5 27 0l2-12-7-6-8.5 4-8.5-4-7 6 2 12z" strokeLinejoin="miter" /><path d="M9 26c0 2 1.5 4 1.5 4 5 4.5 16 4.5 21 0 0 0 1.5-2 1.5-4" /><path d="M11 30.5c5 3.5 18 3.5 23 0" fill="none" /><path d="M11 30.5v8h23v-8" /><path d="M11 38.5h23v2H11v-2z" /><path d="M11.5 34.5h22" fill="none" /></g></svg>,
+    [PieceType.KING]: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45"><g fill="#000" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.5 11.63V6M20 8h5" strokeLinejoin="miter" /><path d="M22.5 25c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" /><path d="M11.5 37c5.5 3.5 16.5 3.5 22 0v-7s-3-4-11-4-11 4-11 4v7z" /><path d="M11.5 30c5.5-3 16.5-3 22 0" fill="none" /><path d="M11.5 37v-7s-3-4-11-4-11 4-11 4v7c5.5 3.5 16.5 3.5 22 0" /><path d="M11.5 30c5.5-3 16.5-3 22 0m-22 7v-7s-3-4-11-4-11 4-11 4v7m22-11c-8 0-11-4-11-4m22 4c-8 0-11-4-11-4" strokeLinejoin="miter" /></g></svg>,
+  },
+};
+
+const B = PlayerColor.BLACK;
+const W = PlayerColor.WHITE;
+const { PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING } = PieceType;
+
+const p: (color: PlayerColor) => Piece = (color) => ({ type: PAWN, color });
+const r: (color: PlayerColor) => Piece = (color) => ({ type: ROOK, color });
+const n: (color: PlayerColor) => Piece = (color) => ({ type: KNIGHT, color });
+const b: (color: PlayerColor) => Piece = (color) => ({ type: BISHOP, color });
+const q: (color: PlayerColor) => Piece = (color) => ({ type: QUEEN, color });
+const k: (color: PlayerColor) => Piece = (color) => ({ type: KING, color });
+
+export const INITIAL_BOARD: Board = [
+  [r(B), n(B), b(B), q(B), k(B), b(B), n(B), r(B)],
+  [p(B), p(B), p(B), p(B), p(B), p(B), p(B), p(B)],
+  [null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null],
+  [p(W), p(W), p(W), p(W), p(W), p(W), p(W), p(W)],
+  [r(W), n(W), b(W), q(W), k(W), b(W), n(W), r(W)],
+];
